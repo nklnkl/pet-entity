@@ -9,11 +9,7 @@ class Entity {
     return this.id;
   }
 
-  /*
-    type
-    0: returns numeric (default)
-    1  returns string
-  */
+  //type 0: returns numeric (default), 1  returns string
   public getCreated (type?: number) : number | string {
     if (type == 0 || type == undefined)
       return this.created;
@@ -21,11 +17,7 @@ class Entity {
       return Moment(this.created).format("dddd, MMMM Do YYYY");
   }
 
-  /*
-    type
-    0: returns numeric (default)
-    1  returns string
-  */
+  //type 0: returns numeric (default), 1  returns string
   public getUpdated (type?: number) : number | string {
     if (type == 0 || type == undefined)
       return this.updated;
