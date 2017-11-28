@@ -1,5 +1,5 @@
 import * as Moment from 'moment';
-export { Entity }
+export { Entity };
 class Entity {
   private id: string;
   private created: number;

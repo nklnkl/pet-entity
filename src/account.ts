@@ -1,5 +1,5 @@
 import { Entity } from './entity';
-
+export { Account };
 class Account extends Entity {
   private email: string;
   private password: string;
