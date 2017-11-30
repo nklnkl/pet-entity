@@ -28,6 +28,20 @@ public getBreed() : number {
 public getSpecies() : number {
   return this.species;
 }
+public getAge(type:number=0) : number {
+  switch (type)
+  {
+    case 0:
+      return moment().diff( moment(this.birthDate), "weeks");
+    case 1:
+      return moment().diff( moment(this.birthDate), "months");
+    case 2:
+      return moment().diff( moment(this.birthDate), "years");
+    default:
+    return -1; //error
+  }
+
+}
 public setName(name: string) : string
 {
   this.name = name;
