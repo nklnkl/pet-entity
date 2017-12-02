@@ -1,4 +1,5 @@
 import { Entity } from './entity';
+import * as Moment from 'moment';
 export { Account };
 class Account extends Entity {
   private email: string;
@@ -7,6 +8,28 @@ class Account extends Entity {
   private birthDate: number;
   private address: string;
   private level: number;
+
+  constructor (json?: string) {
+    if (json) {
+      super(json);
+      let object: any = JSON.parse(json);
+      this.setEmail(object.email);
+      this.setPassword(object.password);
+      this.setName(object.name);
+      this.setBirthDate(object.birthDate);
+      this.setAddress(object.address);
+      this.setLevel(object.level);
+    }
+    else {
+      super();
+      this.setEmail('null');
+      this.setPassword('null');
+      this.setName('null');
+      this.setBirthDate(0);
+      this.setAddress('null');
+      this.setLevel(0);
+    }
+  }
 
   public getEmail () : string {
     return this.email;
@@ -19,28 +42,28 @@ class Account extends Entity {
   }
   //type 0: returns numeric (default), 1  returns string
   public getBirthDate (type?: number) : number | string {
-    if (type == 0 || type == undefined)
-      return this.birthDate;
-    else
-      switch(this.birthDate) {
-        case 0: return 'user';
-        case 1: return 'admin';
-        default: return 'error';
-      }
+    switch(type) {
+      case 0: return this.birthDate;
+      case 1: return Moment(this.birthDate).format("dddd, MMMM Do YYYY");
+      default: return this.birthDate;
+    }
   }
   public getAddress () : string {
     return this.address;
   }
   //type 0: returns numeric (default), 1  returns string
   public getLevel (type?: number) : number | string {
-    if (type == 0 || type == undefined)
-      return this.level;
-    else
-      switch(this.level) {
-        case 0: return 'user';
-        case 1: return 'admin';
-        default: return 'error';
-      }
+    switch(type) {
+      case 0: return this.level;
+      case 1:
+        switch(this.level) {
+          case 0: return 'null';
+          case 1: return 'user';
+          case 2: return 'admin';
+          default: return 'null';
+        }
+      default: return this.level;
+    }
   }
 
   public setEmail (email: string) : string {
