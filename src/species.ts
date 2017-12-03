@@ -6,16 +6,10 @@ class Species {
   public static getList () : Array<string> {
     return this.list;
   }
-  public static getListLength () : number {
-    return this.list.length;
-  }
 }
 class Breeds {
   public static getList () : Array<Array<string>> {
     return this.list;
-  }
-  public static getListLength () : number {
-    return this.list.length;
   }
   private static list: Array<Array<string>> = [
     [],
