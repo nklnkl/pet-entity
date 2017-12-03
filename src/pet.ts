@@ -8,6 +8,7 @@ class Pet extends Entity {
   private birthDate: number;
   private breed: number;
   private species: number;
+  private status: number;
 
   constructor (json?: string) {
     if (json) {
@@ -17,6 +18,7 @@ class Pet extends Entity {
       this.setBirthDate(object.birthDate);
       this.setBreed(object.breed);
       this.setSpecies(object.species);
+      this.setStatus(object.status);
     }
     else {
       super();
@@ -24,6 +26,7 @@ class Pet extends Entity {
       this.setBirthDate(0);
       this.setBreed(0);
       this.setSpecies(0);
+      this.setStatus(0);
     }
   }
 
@@ -51,6 +54,19 @@ class Pet extends Entity {
       default: return this.species;
     }
   }
+  public getStatus (type: number = 0) : number|string {
+    switch (type) {
+      case 0: return this.status;
+      case 1:
+        switch (this.status) {
+          case 0: return 'null';
+          case 1: return 'available';
+          case 2: return 'adopted';
+          default: return 'null';
+        }
+      default: return this.status;
+    }
+  }
   public getAge(unit: number = 0) : number {
     switch (unit) {
       case 0: return Moment().diff( Moment(this.birthDate), "weeks");
@@ -74,5 +90,9 @@ class Pet extends Entity {
   public setBirthDate(birthDate:number) : number {
     this.birthDate = birthDate
     return this.birthDate;
+  }
+  public setStatus(status:number) : number {
+    this.status = status
+    return this.status;
   }
 }
