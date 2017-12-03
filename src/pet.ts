@@ -33,40 +33,44 @@ class Pet extends Entity {
   public getName() : string {
     return this.name;
   }
-  public getBirthDate(type: number = 0) : number|string {
-    switch (type){
-      case 0: return this.birthDate;
-      case 1: return Moment(this.birthDate).format("dddd, MMMM Do YYYY");
-      default: return this.birthDate;
+
+  public getBirthDate () : number {
+    return this.birthDate;
+  }
+
+  public getBirthDateString () : string {
+    return Moment(this.birthDate).format("dddd, MMMM Do YYYY");
+  }
+
+  public getBreed() : number {
+    return this.breed;
+  }
+
+  public getBreedString () : string {
+    return Breeds.getList()[this.species][this.breed];
+  }
+
+  public getSpecies() : number {
+    return this.species
+  }
+
+  public getSpeciesString () : string {
+    return Species.getList()[this.species];
+  }
+
+  public getStatus () : number {
+    return this.status;
+  }
+
+  public getStatusString (type: number = 0) : string {
+    switch (this.status) {
+      case 0: return 'null';
+      case 1: return 'available';
+      case 2: return 'adopted';
+      default: return 'null';
     }
   }
-  public getBreed(type: number = 0) : number|string {
-    switch(type) {
-      case 0: return this.breed;
-      case 1: return Breeds.getList()[this.species][this.breed];
-      default: return this.breed;
-    }
-  }
-  public getSpecies(type: number = 0) : number|string {
-    switch(type) {
-      case 0: return this.species;
-      case 1: return Species.getList()[this.species];
-      default: return this.species;
-    }
-  }
-  public getStatus (type: number = 0) : number|string {
-    switch (type) {
-      case 0: return this.status;
-      case 1:
-        switch (this.status) {
-          case 0: return 'null';
-          case 1: return 'available';
-          case 2: return 'adopted';
-          default: return 'null';
-        }
-      default: return this.status;
-    }
-  }
+
   public getAge(unit: number = 0) : number {
     switch (unit) {
       case 0: return Moment().diff( Moment(this.birthDate), "weeks");
@@ -75,6 +79,7 @@ class Pet extends Entity {
       default: return Moment().diff( Moment(this.birthDate), "weeks");
     }
   }
+
   public setName(name: string) : string {
     this.name = name;
     return this.name;

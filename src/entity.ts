@@ -23,22 +23,20 @@ class Entity {
     return this.id;
   }
 
-  //type 0: returns numeric (default), 1  returns string
-  public getCreated (type?: number) : number | string {
-    switch(type) {
-      case 0: return this.created;
-      case 1: return Moment(this.created).format("dddd, MMMM Do YYYY");
-      default: return this.created;
-    }
+  public getCreated () : number {
+    return this.created;
   }
 
-  //type 0: returns numeric (default), 1  returns string
-  public getUpdated (type?: number) : number | string {
-    switch(type) {
-      case 0: return this.updated;
-      case 1: return Moment(this.updated).format("dddd, MMMM Do YYYY");
-      default: return this.updated;
-    }
+  public getCreatedString () : string {
+    return Moment(this.created).format("dddd, MMMM Do YYYY");
+  }
+
+  public getUpdated () : number {
+    return this.updated;
+  }
+
+  public getUpdatedString () : string {
+    return Moment(this.updated).format("dddd, MMMM Do YYYY");
   }
 
   public setId (id: string) : string {

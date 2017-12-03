@@ -1,6 +1,7 @@
 import { Entity } from './entity';
 import * as Moment from 'moment';
 export { Account };
+
 class Account extends Entity {
   private email: string;
   private password: string;
@@ -34,35 +35,37 @@ class Account extends Entity {
   public getEmail () : string {
     return this.email;
   }
+  
   public getPassword () : string {
     return this.password;
   }
+
   public getName () : string {
     return this.name;
   }
-  //type 0: returns numeric (default), 1  returns string
-  public getBirthDate (type?: number) : number | string {
-    switch(type) {
-      case 0: return this.birthDate;
-      case 1: return Moment(this.birthDate).format("dddd, MMMM Do YYYY");
-      default: return this.birthDate;
-    }
+
+  public getBirthDate () : number {
+    return this.birthDate;
   }
+
+  public getBirthDateString () : string {
+    return Moment(this.birthDate).format("dddd, MMMM Do YYYY");
+  }
+
   public getAddress () : string {
     return this.address;
   }
-  //type 0: returns numeric (default), 1  returns string
-  public getLevel (type?: number) : number | string {
-    switch(type) {
-      case 0: return this.level;
-      case 1:
-        switch(this.level) {
-          case 0: return 'null';
-          case 1: return 'user';
-          case 2: return 'admin';
-          default: return 'null';
-        }
-      default: return this.level;
+
+  public getLevel () : number {
+    return this.level;
+  }
+
+  public getLevelString () : string {
+    switch(this.level) {
+      case 0: return 'null';
+      case 1: return 'user';
+      case 2: return 'admin';
+      default: return 'null';
     }
   }
 
