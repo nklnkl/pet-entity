@@ -32,10 +32,22 @@ class Account extends Entity {
     }
   }
 
+  public toObject () : Object {
+    let object: Object = {
+      email: this.email,
+      password: this.password,
+      name: this.name,
+      birthDate: this.birthDate,
+      address: this.address,
+      level: this.level
+    };
+    return object;
+  }
+
   public getEmail () : string {
     return this.email;
   }
-  
+
   public getPassword () : string {
     return this.password;
   }
