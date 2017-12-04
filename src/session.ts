@@ -4,15 +4,13 @@ export { Session };
 class Session extends Entity {
   private userId : string;
 
-  constructor (json?: string) {
-    if (json) {
-      super(json);
-      let object: any = JSON.parse(json);
+  constructor (object?: any) {
+    super();
+    this.setUserId('null');
+    
+    if (object) {
+      super(object);
       this.setUserId(object.userId);
-    }
-    else {
-      super();
-      this.setUserId('null');
     }
   }
 

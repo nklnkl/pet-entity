@@ -5,17 +5,15 @@ class Entity {
   private created: number;
   private updated: number;
 
-  constructor (json?: string) {
-    if (json) {
-      let object: any = JSON.parse(json);
+  constructor (object?: any) {
+    this.setId('null');
+    this.setCreated(0);
+    this.setUpdated(0);
+
+    if (object) {
       this.setId(object.id);
       this.setCreated(object.created);
       this.setUpdated(object.updated);
-    }
-    else {
-      this.setId('null');
-      this.setCreated(0);
-      this.setUpdated(0);
     }
   }
 

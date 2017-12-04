@@ -10,10 +10,17 @@ class Account extends Entity {
   private address: string;
   private level: number;
 
-  constructor (json?: string) {
-    if (json) {
-      super(json);
-      let object: any = JSON.parse(json);
+  constructor (object?: any) {
+    super();
+    this.setEmail('null');
+    this.setPassword('null');
+    this.setName('null');
+    this.setBirthDate(0);
+    this.setAddress('null');
+    this.setLevel(0);
+
+    if (object) {
+      super(object);
       this.setEmail(object.email);
       this.setPassword(object.password);
       this.setName(object.name);
@@ -21,19 +28,10 @@ class Account extends Entity {
       this.setAddress(object.address);
       this.setLevel(object.level);
     }
-    else {
-      super();
-      this.setEmail('null');
-      this.setPassword('null');
-      this.setName('null');
-      this.setBirthDate(0);
-      this.setAddress('null');
-      this.setLevel(0);
-    }
   }
 
-  public toObject () : Object {
-    let object: Object = {
+  public toObject () : any {
+    let object: any = {
       email: this.email,
       password: this.password,
       name: this.name,

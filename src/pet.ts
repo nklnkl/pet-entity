@@ -10,23 +10,21 @@ class Pet extends Entity {
   private species: number;
   private status: number;
 
-  constructor (json?: string) {
-    if (json) {
-      super(json);
-      let object: any = JSON.parse(json);
+  constructor (object?: any) {
+    super();
+    this.setName('null');
+    this.setBirthDate(0);
+    this.setBreed(0);
+    this.setSpecies(0);
+    this.setStatus(0);
+
+    if (object) {
+      super(object);
       this.setName(object.name);
       this.setBirthDate(object.birthDate);
       this.setBreed(object.breed);
       this.setSpecies(object.species);
       this.setStatus(object.status);
-    }
-    else {
-      super();
-      this.setName('null');
-      this.setBirthDate(0);
-      this.setBreed(0);
-      this.setSpecies(0);
-      this.setStatus(0);
     }
   }
 
