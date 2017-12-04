@@ -11,10 +11,22 @@ class Entity {
     this.setUpdated(0);
 
     if (object) {
-      this.setId(object.id);
-      this.setCreated(object.created);
-      this.setUpdated(object.updated);
+      if (object.id)
+        this.setId(object.id);
+      if (object.created)
+        this.setCreated(object.created);
+      if (object.updated)
+        this.setUpdated(object.updated);
     }
+  }
+
+  public toObject () : any {
+    let object: any = {
+      id: this.id,
+      created: this.created,
+      updated: this.updated
+    };
+    return object;
   }
 
   public getId () : string {

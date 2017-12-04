@@ -11,7 +11,8 @@ class Pet extends Entity {
   private status: number;
 
   constructor (object?: any) {
-    super();
+    super(object);
+
     this.setName('null');
     this.setBirthDate(0);
     this.setBreed(0);
@@ -19,14 +20,31 @@ class Pet extends Entity {
     this.setStatus(0);
 
     if (object) {
-      super(object);
-      this.setName(object.name);
-      this.setBirthDate(object.birthDate);
-      this.setBreed(object.breed);
-      this.setSpecies(object.species);
-      this.setStatus(object.status);
+      if(object.name)
+        this.setName(object.name);
+      if(object.birthDate)
+        this.setBirthDate(object.birthDate);
+      if(object.breed)
+        this.setBreed(object.breed);
+      if(object.species)
+        this.setSpecies(object.species);
+      if(object.status)
+        this.setStatus(object.status);
     }
   }
+
+  public toObject () : any {
+    let superObject = super.toObject();
+    let object: any = {
+      name: this.name,
+      birthDate: this.birthDate,
+      breed: this.breed,
+      species: this.species,
+      status: this.status
+    };
+    return {...superObject, ...object};
+  }
+
 
   public getName() : string {
     return this.name;

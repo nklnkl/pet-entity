@@ -11,7 +11,8 @@ class Account extends Entity {
   private level: number;
 
   constructor (object?: any) {
-    super();
+    super(object);
+
     this.setEmail('null');
     this.setPassword('null');
     this.setName('null');
@@ -20,17 +21,23 @@ class Account extends Entity {
     this.setLevel(0);
 
     if (object) {
-      super(object);
-      this.setEmail(object.email);
-      this.setPassword(object.password);
-      this.setName(object.name);
-      this.setBirthDate(object.birthDate);
-      this.setAddress(object.address);
-      this.setLevel(object.level);
+      if (object.email)
+        this.setEmail(object.email);
+      if (object.password)
+        this.setPassword(object.password);
+      if (object.name)
+        this.setName(object.name);
+      if (object.birthDate)
+        this.setBirthDate(object.birthDate);
+      if (object.address)
+        this.setAddress(object.address);
+      if (object.level)
+        this.setLevel(object.level);
     }
   }
 
   public toObject () : any {
+    let superObject = super.toObject();
     let object: any = {
       email: this.email,
       password: this.password,
@@ -39,7 +46,7 @@ class Account extends Entity {
       address: this.address,
       level: this.level
     };
-    return object;
+    return {...superObject, ...object};
   }
 
   public getEmail () : string {
