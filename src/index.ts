@@ -1,7 +1,7 @@
-import { Entity } from './object/entity';
-import { Account } from './object/account';
-import { Pet } from './object/pet';
-import { Session } from './object/session';
+import { Entity, EntityInterface } from './object/entity';
+import { Account, AccountInterface } from './object/account';
+import { Pet, PetInterface } from './object/pet';
+import { Session, SessionInterface } from './object/session';
 import { Breeds, Species } from './object/species';
 export {
   Entity,
@@ -9,5 +9,9 @@ export {
   Pet,
   Session,
   Breeds,
-  Species
+  Species,
+  EntityInterface,
+  AccountInterface,
+  PetInterface,
+  SessionInterface
 };
