@@ -1,7 +1,15 @@
-import { Entity } from './entity';
+import { Entity, EntityInterface } from './entity';
 import { Breeds, Species } from './species';
 import * as Moment from 'moment';
-export { Pet };
+export { Pet, PetInterface };
+
+interface PetInterface extends EntityInterface {
+  name: string;
+  birthDate: number;
+  breed: number;
+  species: number;
+  status: number;
+}
 
 class Pet extends Entity {
   private name: string;

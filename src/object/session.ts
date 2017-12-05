@@ -1,5 +1,9 @@
-import {Entity} from './entity';
-export { Session };
+import { Entity, EntityInterface } from './entity';
+export { Session, SessionInterface };
+
+interface SessionInterface extends EntityInterface {
+  userId: string;
+}
 
 class Session extends Entity {
   private userId : string;

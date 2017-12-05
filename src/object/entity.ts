@@ -1,5 +1,12 @@
 import * as Moment from 'moment';
-export { Entity };
+export { Entity, EntityInterface };
+
+interface EntityInterface {
+  id: string;
+  created: number;
+  updated: number;
+}
+
 class Entity {
   private id: string;
   private created: number;

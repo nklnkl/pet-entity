@@ -1,6 +1,15 @@
-import { Entity } from './entity';
+import { Entity, EntityInterface } from './entity';
 import * as Moment from 'moment';
-export { Account };
+export { Account, AccountInterface };
+
+interface AccountInterface extends EntityInterface {
+  email: string;
+  password: string;
+  name: string;
+  birthDate: number;
+  address: string;
+  level: number;
+}
 
 class Account extends Entity {
   private email: string;
