@@ -12,13 +12,35 @@ interface AccountInterface extends EntityInterface {
 }
 
 class Account extends Entity {
+  /**
+  * Unique email address of an acoount owner.
+  */
   private email: string;
+  /**
+  * Password of the account that will be used for authentication purposes.
+  */
   private password: string;
+  /**
+  * Biographical name of the account owner.
+  */
   private name: string;
+  /**
+  * Birth datetime stamp. This is measured in milliseconds since Epoch.
+  */
   private birthDate: number;
+  /**
+  * Geographical location of the account owner.
+  */
   private address: string;
+  /**
+  * Level of access the account has. Can be customer or admin.
+  */
   private level: number;
 
+  /**
+  * If a generic object is passed, valid properties from the object will be
+  assigned.
+  */
   constructor (object?: any) {
     super(object);
 
@@ -45,6 +67,9 @@ class Account extends Entity {
     }
   }
 
+  /**
+  * Returns a generic object of the instance.
+  */
   public toObject () : any {
     let superObject = super.toObject();
     let object: any = {
@@ -89,7 +114,7 @@ class Account extends Entity {
   public getLevelString () : string {
     switch(this.level) {
       case 0: return 'null';
-      case 1: return 'user';
+      case 1: return 'customer';
       case 2: return 'admin';
       default: return 'null';
     }

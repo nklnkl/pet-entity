@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "typings": "./dist/index",
   "scripts": {
-    "test": "mocha -r ts-node/register src/test/*.test.ts"
+    "test": "mocha -r ts-node/register src/test/*.test.ts",
+    "doc": "rm -rf doc && typedoc --out ./doc ./src --name pet-entity --readme readme.md"
   },
   "author": "",
   "license": "ISC",

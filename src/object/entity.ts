@@ -8,10 +8,23 @@ interface EntityInterface {
 }
 
 class Entity {
+  /**
+  * Unique identifier.
+  */
   private id: string;
+  /**
+  * Created datetime stamp. This is measured in milliseconds since Epoch.
+  */
   private created: number;
+  /**
+  * Last updated datetime stamp. This is measured in milliseconds since Epoch.
+  */
   private updated: number;
 
+  /**
+  * If a generic object is passed, valid properties from the object will be
+  assigned.
+  */
   constructor (object?: any) {
     this.setId('null');
     this.setCreated(0);
@@ -27,6 +40,9 @@ class Entity {
     }
   }
 
+  /**
+  * Returns a generic object of the instance.
+  */
   public toObject () : any {
     let object: any = {
       id: this.id,

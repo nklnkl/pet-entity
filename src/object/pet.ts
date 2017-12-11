@@ -12,12 +12,31 @@ interface PetInterface extends EntityInterface {
 }
 
 class Pet extends Entity {
+  /**
+  * Name of the pet.
+  */
   private name: string;
+  /**
+  * Birth datetime stamp. This is measured in milliseconds since Epoch.
+  */
   private birthDate: number;
+  /**
+  * Breed of the pet. See Species class.
+  */
   private breed: number;
+  /**
+  * Species of the pet. See Species class.
+  */
   private species: number;
+  /**
+  * Status of the pet.
+  */
   private status: number;
 
+  /**
+  * If a generic object is passed, valid properties from the object will be
+  assigned.
+  */
   constructor (object?: any) {
     super(object);
 
@@ -41,6 +60,9 @@ class Pet extends Entity {
     }
   }
 
+  /**
+  * Returns a generic object of the instance.
+  */
   public toObject () : any {
     let superObject = super.toObject();
     let object: any = {
