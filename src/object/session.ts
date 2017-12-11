@@ -23,7 +23,7 @@ class Session extends Entity {
 
     if (object) {
       if (object.accountId)
-        this.setAccountId(object.userId);
+        this.setAccountId(object.accountId);
     }
   }
 
@@ -42,7 +42,7 @@ class Session extends Entity {
     this.accountId = accountId;
     return accountId;
   }
-  public getUserId() {
+  public getAccountId() {
     return this.accountId;
   }
 }
