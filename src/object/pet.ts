@@ -32,6 +32,10 @@ class Pet extends Entity {
   * Status of the pet.
   */
   private status: number;
+  /**
+  * URLs to the images of the pet.
+  */
+  private images: Array<string>;
 
   /**
   * If a generic object is passed, valid properties from the object will be
@@ -108,6 +112,10 @@ class Pet extends Entity {
     return this.status;
   }
 
+  public getImages () : Array<string> {
+    return this.images;
+  }
+
   public getStatusString (type: number = 0) : string {
     switch (this.status) {
       case 0: return 'null';
@@ -145,5 +153,9 @@ class Pet extends Entity {
   public setStatus(status:number) : number {
     this.status = status
     return this.status;
+  }
+  public setImages (images: Array<string>) : Array<string> {
+    this.images = images;
+    return this.images;
   }
 }
