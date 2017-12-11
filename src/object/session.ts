@@ -2,36 +2,47 @@ import { Entity, EntityInterface } from './entity';
 export { Session, SessionInterface };
 
 interface SessionInterface extends EntityInterface {
-  userId: string;
+  accountId: string;
 }
 
 class Session extends Entity {
-  private userId : string;
 
+  /**
+  * References the account that owns the session.
+  */
+  private accountId : string;
+
+  /**
+  * If a generic object is passed, valid properties from the object will be
+  assigned.
+  */
   constructor (object?: any) {
     super(object);
 
-    this.setUserId('null');
+    this.setAccountId('null');
 
     if (object) {
-      if (object.userId)
-        this.setUserId(object.userId);
+      if (object.accountId)
+        this.setAccountId(object.userId);
     }
   }
 
+  /**
+  * Returns a generic object of the instance.
+  */
   public toObject () : any {
     let superObject = super.toObject();
     let object: any = {
-      userId: this.userId
+      accountId: this.accountId
     };
     return {...superObject, ...object};
   }
 
-  public setUserId(userId: string) : string {
-    this.userId = userId;
-    return userId;
+  public setAccountId(accountId: string) : string {
+    this.accountId = accountId;
+    return accountId;
   }
   public getUserId() {
-    return this.userId;
+    return this.accountId;
   }
 }
